@@ -1,0 +1,63 @@
+body{
+font-family:Poppins;
+margin:0;
+background:#f5f7f8;
+color:#333;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 10%;
+background:#ffffff;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav a{
+margin:0 10px;
+text-decoration:none;
+color:#333;
+font-weight:500;
+}
+
+.hero{
+text-align:center;
+padding:120px 20px;
+background:linear-gradient(120deg,#3c8d7a,#9ed0c6);
+color:white;
+}
+
+.botao{
+display:inline-block;
+margin-top:20px;
+padding:12px 25px;
+background:#2f6f61;
+color:white;
+border-radius:6px;
+text-decoration:none;
+}
+
+section{
+padding:80px 10%;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:8px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#1f3c3a;
+color:white;
+}
