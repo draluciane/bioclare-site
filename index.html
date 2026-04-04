@@ -13,18 +13,12 @@
 
         :root {
             --navy: #1a2744;
-            --navy-light: #2a3f6b;
+            --navy-dark: #0f1a2e;
             --gold: #c9a84c;
             --gold-light: #e0c872;
-            --cream: #f8f6f0;
-            --soft-blue: #e8f0f8;
         }
 
         body { overflow-x: hidden; }
-
-        .hero-gradient {
-            background: linear-gradient(135deg, #f8f9fc 0%, #e8f0f8 50%, #f0f4f8 100%);
-        }
 
         .gold-gradient {
             background: linear-gradient(135deg, #c9a84c, #e0c872, #c9a84c);
@@ -36,7 +30,7 @@
         .btn-gold {
             background: linear-gradient(135deg, #c9a84c, #e0c872);
             color: #1a2744;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.4s ease;
             box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
         }
         .btn-gold:hover {
@@ -45,8 +39,8 @@
         }
 
         .btn-outline-gold {
-            border: 2px solid var(--gold);
-            color: var(--gold);
+            border: 2px solid #c9a84c;
+            color: #c9a84c;
             transition: all 0.4s ease;
         }
         .btn-outline-gold:hover {
@@ -55,24 +49,20 @@
             transform: translateY(-2px);
         }
 
-        .card-hover {
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(26, 39, 68, 0.12);
-        }
-
-        .float-animation {
-            animation: floatUp 3s ease-in-out infinite;
-        }
+        .float-animation { animation: floatUp 3s ease-in-out infinite; }
         @keyframes floatUp {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-12px); }
         }
 
+        .pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(201, 168, 76, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(201, 168, 76, 0.6); }
+        }
+
         .nav-scrolled {
-            background: rgba(26, 39, 68, 0.97) !important;
+            background: rgba(26, 39, 68, 0.98) !important;
             backdrop-filter: blur(20px);
             box-shadow: 0 4px 30px rgba(0,0,0,0.15);
         }
@@ -82,28 +72,7 @@
             transform: translateY(40px);
             transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        .section-fade.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .pulse-glow {
-            animation: pulseGlow 2s ease-in-out infinite;
-        }
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(201, 168, 76, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(201, 168, 76, 0.6); }
-        }
-
-        .dark-section {
-            background: linear-gradient(135deg, #0f1a2e 0%, #1a2744 50%, #162240 100%);
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-        }
+        .section-fade.visible { opacity: 1; transform: translateY(0); }
 
         .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
@@ -114,49 +83,145 @@
         }
         .mobile-menu.open { transform: translateX(0); }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--navy); }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(var(--gold), var(--gold-light));
-            border-radius: 4px;
-        }
+        .card-hover { transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(26, 39, 68, 0.12); }
 
         .counter-number { font-variant-numeric: tabular-nums; }
 
-        /* Melhor contraste para textos em fundo escuro */
-        .dark-text-primary { color: rgba(255, 255, 255, 0.95); }
-        .dark-text-secondary { color: rgba(255, 255, 255, 0.80); }
-        .dark-text-tertiary { color: rgba(255, 255, 255, 0.70); }
-        .dark-text-subtle { color: rgba(255, 255, 255, 0.60); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--navy); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(#c9a84c, #e0c872); border-radius: 4px; }
 
-        /* Nav links com melhor visibilidade */
-        .nav-link { color: rgba(255, 255, 255, 0.85); }
+        .dark-section {
+            background: linear-gradient(180deg, #0d1526 0%, #1a2744 50%, #0f1a2e 100%);
+        }
+
+        .dark-h1 { color: #ffffff; }
+        .dark-h2 { color: #f0f0f0; }
+        .dark-h3 { color: #e8e8e8; }
+        .dark-body { color: #d4d4d4; }
+        .dark-body-muted { color: #a8b4c8; }
+        .dark-accent { color: #c9a84c; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(201, 168, 76, 0.3);
+        }
+
+        .nav-link { color: rgba(255,255,255,0.92); }
         .nav-link:hover { color: #e0c872; }
-        .nav-scrolled .nav-link { color: rgba(255, 255, 255, 0.90); }
-        .nav-scrolled .nav-link:hover { color: #e0c872; }
 
-        /* Glass cards com texto mais visível */
-        .glass-card h3 { color: rgba(255, 255, 255, 0.95) !important; }
-        .glass-card p { color: rgba(255, 255, 255, 0.75) !important; }
-
-        /* Footer links mais visíveis */
-        .footer-link { color: rgba(255, 255, 255, 0.70); }
+        .footer-link { color: rgba(255,255,255,0.75); }
         .footer-link:hover { color: #e0c872; }
-        .footer-heading { color: rgba(255, 255, 255, 0.90); }
-        .footer-text { color: rgba(255, 255, 255, 0.65); }
+
+        .hero-bg {
+            background: linear-gradient(160deg, #f5f7fa 0%, #e8edf5 40%, #f0f4f8 100%);
+        }
+
+        .ppr-bg {
+            background: linear-gradient(180deg, #141e36 0%, #1e2d4d 50%, #141e36 100%);
+        }
+
+        .deco-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            pointer-events: none;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .check-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(201, 168, 76, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+        }
+        .check-icon svg {
+            width: 14px;
+            height: 14px;
+            color: #c9a84c;
+        }
+
+        .feature-dark-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+        }
+        .feature-dark-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(201, 168, 76, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .indication-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(26,39,68,0.06);
+            border: 1px solid #eef1f6;
+            transition: all 0.4s ease;
+        }
+        .indication-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(26,39,68,0.12);
+        }
+
+        .timeline-dot {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #1a2744;
+            color: #c9a84c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 0 4px white, 0 4px 16px rgba(26,39,68,0.2);
+        }
+        .timeline-dot.active {
+            background: #c9a84c;
+            color: #1a2744;
+        }
+
+        .not-indicated {
+            background: linear-gradient(135deg, #fef2f2, #fff5f5);
+            border: 1px solid #fecaca;
+            border-radius: 16px;
+            padding: 2rem;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
 
-    <!-- Navigation -->
+    <!-- ============ NAVIGATION ============ -->
     <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <a href="#home" class="flex items-center space-x-2">
+                <a href="#home" class="flex items-center space-x-1">
                     <span class="font-playfair text-2xl font-bold text-white tracking-wide">Bio<span style="color:#c9a84c">Clare</span><sup class="text-xs" style="color:#c9a84c">™</sup></span>
                 </a>
-                <div class="hidden md:flex items-center space-x-8">
+                <div class="hidden lg:flex items-center space-x-8">
                     <a href="#home" class="nav-link text-sm font-medium tracking-wide transition-colors">Início</a>
+                    <a href="#ppr-night" class="nav-link text-sm font-medium tracking-wide transition-colors">PPR Night</a>
                     <a href="#problem" class="nav-link text-sm font-medium tracking-wide transition-colors">O Problema</a>
                     <a href="#solution" class="nav-link text-sm font-medium tracking-wide transition-colors">A Solução</a>
                     <a href="#how-it-works" class="nav-link text-sm font-medium tracking-wide transition-colors">Como Funciona</a>
@@ -164,7 +229,7 @@
                     <a href="#differentials" class="nav-link text-sm font-medium tracking-wide transition-colors">Diferenciais</a>
                     <a href="#contact" class="btn-gold px-6 py-2.5 rounded-full text-sm font-semibold tracking-wide">Agende uma Consulta</a>
                 </div>
-                <button id="menuBtn" class="md:hidden text-white p-2">
+                <button id="menuBtn" class="lg:hidden text-white p-2">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 </button>
             </div>
@@ -172,13 +237,14 @@
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-[#1a2744] z-[60] shadow-2xl">
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-[#0f1a2e] z-[60] shadow-2xl">
         <div class="p-6">
-            <button id="closeMenuBtn" class="absolute top-6 right-6 text-white hover:text-[#c9a84c] transition-colors">
+            <button id="closeMenuBtn" class="absolute top-6 right-6 text-white/80 hover:text-[#c9a84c] transition-colors">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
             <div class="mt-16 space-y-6">
                 <a href="#home" class="block text-white/90 hover:text-[#c9a84c] text-lg font-medium mobile-link transition-colors">Início</a>
+                <a href="#ppr-night" class="block text-white/90 hover:text-[#c9a84c] text-lg font-medium mobile-link transition-colors">PPR Night</a>
                 <a href="#problem" class="block text-white/90 hover:text-[#c9a84c] text-lg font-medium mobile-link transition-colors">O Problema</a>
                 <a href="#solution" class="block text-white/90 hover:text-[#c9a84c] text-lg font-medium mobile-link transition-colors">A Solução</a>
                 <a href="#how-it-works" class="block text-white/90 hover:text-[#c9a84c] text-lg font-medium mobile-link transition-colors">Como Funciona</a>
@@ -189,26 +255,28 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-gradient min-h-screen flex items-center relative overflow-hidden">
-        <div class="absolute inset-0 opacity-5">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full filter blur-3xl"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-yellow-300 rounded-full filter blur-3xl"></div>
-        </div>
+    <!-- ============ HERO SECTION ============ -->
+    <section id="home" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+        <div class="absolute top-20 left-10 w-80 h-80 bg-blue-200/20 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-yellow-200/15 rounded-full filter blur-3xl"></div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-8">
-                    <div class="inline-flex items-center px-4 py-2 bg-blue-900/10 rounded-full border border-blue-900/20">
+                    <div class="inline-flex items-center px-4 py-2 bg-blue-900/8 rounded-full border border-blue-900/15">
                         <span class="w-2 h-2 bg-[#c9a84c] rounded-full mr-2 animate-pulse"></span>
                         <span class="text-sm text-[#1a2744] font-medium tracking-wider uppercase">Tecnologia Bioativa</span>
                     </div>
-                    <h1 class="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                        <span class="text-[#1a2744]">O Alinhador</span><br>
+
+                    <h1 class="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-[#1a2744]">
+                        O Alinhador<br>
                         <span class="gold-gradient font-playfair italic">Multifuncional</span>
                     </h1>
+
                     <p class="text-lg text-gray-600 max-w-lg leading-relaxed">
                         Ortodontia leve • Clareamento • Saúde Gengival • Proteção contra bruxismo — tudo em um único dispositivo inovador.
                     </p>
+
                     <div class="flex flex-wrap gap-4">
                         <a href="#contact" class="btn-gold px-8 py-4 rounded-full text-base font-semibold tracking-wide inline-flex items-center">
                             <span>Agende uma Consulta</span>
@@ -219,6 +287,7 @@
                             WhatsApp
                         </a>
                     </div>
+
                     <div class="flex items-center space-x-8 pt-4">
                         <div class="text-center">
                             <div class="text-2xl font-bold text-[#1a2744] counter-number" data-target="30">0</div>
@@ -236,35 +305,138 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="relative flex justify-center items-center">
-                    <div class="absolute w-[500px] h-[500px] border border-[#c9a84c]/20 rounded-full"></div>
-                    <div class="absolute w-[400px] h-[400px] border border-[#c9a84c]/10 rounded-full"></div>
-                    <img src="https://image.qwenlm.ai/public_source/6e0bf1c6-97c7-4f45-9a3b-bee89663c98b/1445d51eb-793d-4288-baa9-8a971bd04d96.png" alt="BioClare Alinhador" class="w-full max-w-lg relative z-10 float-animation drop-shadow-2xl" style="filter: drop-shadow(0 25px 50px rgba(26,39,68,0.15));">
+                    <div class="deco-circle w-[500px] h-[500px]"></div>
+                    <div class="deco-circle w-[400px] h-[400px]"></div>
+                    <img src="https://image.qwenlm.ai/public_source/6e0bf1c6-97c7-4f45-9a3b-bee89663c98b/1445d51eb-793d-4288-baa9-8a971bd04d96.png" alt="BioClare Alinhador Multifuncional" class="w-full max-w-lg relative z-10 float-animation" style="filter: drop-shadow(0 25px 50px rgba(26,39,68,0.15));">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Brand Strip -->
-    <div class="dark-section py-6">
+    <!-- ============ BRAND STRIP ============ -->
+    <div class="bg-[#1a2744] py-5">
         <div class="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-center gap-8 md:gap-16">
-            <span class="text-white/80 text-sm tracking-[0.3em] uppercase font-medium">Tecnologia Bioativa</span>
+            <span class="text-white/90 text-sm tracking-[0.3em] uppercase font-medium">Tecnologia Bioativa</span>
             <span class="text-[#c9a84c]">✦</span>
-            <span class="text-white/80 text-sm tracking-[0.3em] uppercase font-medium">Precisão Digital</span>
+            <span class="text-white/90 text-sm tracking-[0.3em] uppercase font-medium">Precisão Digital</span>
             <span class="text-[#c9a84c]">✦</span>
-            <span class="text-white/80 text-sm tracking-[0.3em] uppercase font-medium">Conforto Superior</span>
+            <span class="text-white/90 text-sm tracking-[0.3em] uppercase font-medium">Conforto Superior</span>
             <span class="text-[#c9a84c]">✦</span>
-            <span class="text-white/80 text-sm tracking-[0.3em] uppercase font-medium">Resultados Comprovados</span>
+            <span class="text-white/90 text-sm tracking-[0.3em] uppercase font-medium">Resultados Comprovados</span>
         </div>
     </div>
 
-    <!-- Problem Section -->
-    <section id="problem" class="py-24 bg-white relative">
+    <!-- ============ PPR NIGHT SECTION ============ -->
+    <section id="ppr-night" class="ppr-bg py-28 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#c9a84c]/5 rounded-full filter blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 section-fade">
+                <span class="inline-block px-4 py-1.5 bg-[#c9a84c]/10 rounded-full border border-[#c9a84c]/20 text-[#c9a84c] text-xs font-semibold tracking-[0.3em] uppercase mb-6">BioClare™ PPR Night</span>
+                <h2 class="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold dark-h1 leading-tight">
+                    Muito além de um alinhador...<br>
+                    <span class="text-[#c9a84c] font-playfair italic">uma solução inteligente</span><br>
+                    para quem não pode esperar.
+                </h2>
+            </div>
+
+            <div class="max-w-3xl mx-auto text-center mb-16 section-fade">
+                <p class="dark-body text-lg leading-relaxed">
+                    Para pacientes com ausência dentária, o tempo entre um tratamento e outro pode impactar não apenas a estética — mas também a confiança, a mastigação e o bem-estar.
+                </p>
+                <p class="dark-body text-lg leading-relaxed mt-4">
+                    O <span class="dark-accent font-semibold">BioClare™ PPR Night</span> foi desenvolvido para esse momento.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div class="space-y-6 section-fade">
+                    <div class="check-item">
+                        <div class="check-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="dark-h3 font-semibold text-lg">Estética imediata e natural</h4>
+                            <p class="dark-body-muted text-sm mt-1">Recupere o sorriso com aparência natural desde o primeiro uso.</p>
+                        </div>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="dark-h3 font-semibold text-lg">Manutenção do espaço protético com precisão</h4>
+                            <p class="dark-body-muted text-sm mt-1">Preserve o espaço correto para a futura reabilitação definitiva.</p>
+                        </div>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="dark-h3 font-semibold text-lg">Proteção dos tecidos e alívio da pressão noturna</h4>
+                            <p class="dark-body-muted text-sm mt-1">Protege gengivas e dentes contra bruxismo durante o sono.</p>
+                        </div>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="dark-h3 font-semibold text-lg">Experiência leve, sem volume e sem desconforto</h4>
+                            <p class="dark-body-muted text-sm mt-1">Design ultrafino que se adapta perfeitamente à boca.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-fade">
+                    <div class="bg-gradient-to-br from-[#1a2d50] to-[#141e36] rounded-2xl border border-[#c9a84c]/20 p-8 md:p-10 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-[#c9a84c]/30 rounded-tr-2xl"></div>
+                        <div class="absolute bottom-0 left-0 w-20 h-20 border-b-2 border-l-2 border-[#c9a84c]/30 rounded-bl-2xl"></div>
+
+                        <div class="text-center mb-6">
+                            <h3 class="font-playfair text-2xl md:text-3xl font-bold text-[#c9a84c] leading-tight">Reabilitação Estética<br>Temporária Inteligente</h3>
+                            <div class="w-12 h-0.5 bg-[#c9a84c]/40 mx-auto mt-4"></div>
+                        </div>
+
+                        <p class="dark-body leading-relaxed mb-6">
+                            Uma solução transitória de alta performance para pacientes que desejam preservar estética, função e conforto durante o planejamento reabilitador.
+                        </p>
+
+                        <div class="flex items-center gap-2 mb-4">
+                            <svg class="w-5 h-5 text-[#c9a84c]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            <span class="dark-accent font-semibold text-sm">Exclusividade BioClare™</span>
+                        </div>
+
+                        <p class="dark-body-muted text-sm leading-relaxed">
+                            Diferente de soluções convencionais, o sistema BioClare™ associa tecnologia de alinhadores com terapia bioativa, promovendo não apenas estética — mas também cuidado com a mucosa e adaptação superior.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-20 section-fade">
+                <p class="font-playfair text-3xl md:text-4xl font-bold dark-h1 italic leading-tight">
+                    Sinta-se segura, confortável e confiante —<br>
+                    <span class="dark-accent not-italic">mesmo durante o processo.</span>
+                </p>
+                <a href="#contact" class="btn-gold mt-8 px-10 py-4 rounded-full text-base font-semibold tracking-wide inline-flex items-center">
+                    Agende sua Avaliação
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PROBLEM SECTION ============ -->
+    <section id="problem" class="py-28 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 section-fade">
                 <span class="text-[#c9a84c] text-sm font-semibold tracking-[0.3em] uppercase">O Desafio</span>
                 <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#1a2744] mt-4">Pacientes querem mais que alinhamento...</h2>
-                <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">Saúde, estética e conforto — tudo em uma única experiência de tratamento.</p>
+                <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">...querem saúde, estética e conforto.</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="section-fade bg-gradient-to-br from-[#f8f9fc] to-white rounded-2xl p-8 border border-gray-100 card-hover group">
@@ -292,53 +464,56 @@
         </div>
     </section>
 
-    <!-- Solution Section -->
-    <section id="solution" class="py-24 dark-section relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 right-0 w-96 h-96 bg-[#c9a84c] rounded-full filter blur-3xl"></div>
-            <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl"></div>
-        </div>
+    <!-- ============ SOLUTION SECTION ============ -->
+    <section id="solution" class="py-28 dark-section relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-[#c9a84c]/5 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full filter blur-3xl"></div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 section-fade">
                 <span class="text-[#c9a84c] text-sm font-semibold tracking-[0.3em] uppercase">Inovação</span>
-                <h2 class="font-playfair text-4xl md:text-5xl font-bold dark-text-primary mt-4">Um dispositivo. Múltiplos benefícios.</h2>
-                <p class="dark-text-secondary mt-4 max-w-2xl mx-auto text-lg">O BioClare™ reúne tecnologia avançada para oferecer um tratamento completo.</p>
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold dark-h1 mt-4">Um dispositivo. Múltiplos benefícios.</h2>
+                <p class="dark-body mt-4 max-w-2xl mx-auto text-lg">O BioClare™ reúne tecnologia avançada para oferecer um tratamento completo.</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="section-fade glass-card rounded-2xl p-8 text-center card-hover group">
+                <!-- Card 1 - Alinhamento Inteligente -->
+                <div class="section-fade feature-dark-card text-center group">
                     <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Alinhamento Leve</h3>
-                    <p class="text-sm leading-relaxed">Rotação e apinhamento anterior com conforto e discrição.</p>
+                    <h3 class="dark-h3 font-bold text-lg mb-2">Alinhamento Inteligente</h3>
+                    <p class="dark-body-muted text-sm leading-relaxed">Correção leve com conforto, discrição e precisão digital.</p>
                 </div>
-                <div class="section-fade glass-card rounded-2xl p-8 text-center card-hover group" style="transition-delay: 0.1s">
+                <!-- Card 2 - Clareamento Assistido -->
+                <div class="section-fade feature-dark-card text-center group" style="transition-delay: 0.1s">
                     <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Clareamento Suave</h3>
-                    <p class="text-sm leading-relaxed">Peróxido 10% + gel bioativo para clareamento eficaz sem sensibilidade.</p>
+                    <h3 class="dark-h3 font-bold text-lg mb-2">Clareamento Assistido de Alta Performance</h3>
+                    <p class="dark-body-muted text-sm leading-relaxed">Tecnologia que promove clareamento progressivo com conforto e controle de sensibilidade.</p>
                 </div>
-                <div class="section-fade glass-card rounded-2xl p-8 text-center card-hover group" style="transition-delay: 0.2s">
+                <!-- Card 3 - Regeneração Bioativa -->
+                <div class="section-fade feature-dark-card text-center group" style="transition-delay: 0.2s">
                     <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Saúde Gengival</h3>
-                    <p class="text-sm leading-relaxed">Ácido hialurônico + xylitol para gengivas saudáveis.</p>
+                    <h3 class="dark-h3 font-bold text-lg mb-2">Regeneração Bioativa Avançada</h3>
+                    <p class="dark-body-muted text-sm leading-relaxed">Ativos inteligentes que auxiliam na saúde gengival, equilíbrio da microbiota e hidratação dos tecidos.</p>
                 </div>
-                <div class="section-fade glass-card rounded-2xl p-8 text-center card-hover group" style="transition-delay: 0.3s">
+                <!-- Card 4 - Proteção Neuromuscular -->
+                <div class="section-fade feature-dark-card text-center group" style="transition-delay: 0.3s">
                     <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Proteção Bruxismo</h3>
-                    <p class="text-sm leading-relaxed">Nitrato de potássio para proteção contra o desgaste noturno.</p>
+                    <h3 class="dark-h3 font-bold text-lg mb-2">Proteção Neuromuscular Noturna</h3>
+                    <p class="dark-body-muted text-sm leading-relaxed">Sistema que reduz sobrecarga, protege estruturas dentárias e melhora o conforto durante o sono.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How it Works -->
-    <section id="how-it-works" class="py-24 bg-white relative">
+    <!-- ============ HOW IT WORKS ============ -->
+    <section id="how-it-works" class="py-28 bg-[#f8f9fc]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 section-fade">
                 <span class="text-[#c9a84c] text-sm font-semibold tracking-[0.3em] uppercase">Processo</span>
@@ -346,48 +521,48 @@
                 <p class="text-gray-500 mt-4 text-lg">Em apenas <span class="text-[#c9a84c] font-bold">30 dias</span></p>
             </div>
             <div class="relative">
-                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-100 -translate-y-1/2 rounded-full">
+                <div class="hidden md:block absolute top-12 left-[12.5%] right-[12.5%] h-0.5 bg-gray-200 rounded-full">
                     <div class="h-full w-3/4 bg-gradient-to-r from-[#c9a84c] to-[#e0c872] rounded-full"></div>
                 </div>
                 <div class="grid md:grid-cols-4 gap-8">
-                    <div class="section-fade text-center relative">
-                        <div class="w-16 h-16 mx-auto bg-[#1a2744] rounded-full flex items-center justify-center text-[#c9a84c] font-bold text-xl mb-6 relative z-10 ring-4 ring-white shadow-lg">1</div>
-                        <div class="bg-gray-50 rounded-2xl p-6 hover-lift">
-                            <img src="https://image.qwenlm.ai/public_source/6e0bf1c6-97c7-4f45-9a3b-bee89663c98b/1aa861896-00cd-4750-9503-c42d87799742.png" alt="Escaneamento" class="w-full h-40 object-cover rounded-xl mb-4">
+                    <div class="section-fade text-center">
+                        <div class="timeline-dot mx-auto mb-6">1</div>
+                        <div class="bg-white rounded-2xl p-6 hover-lift shadow-sm">
+                            <img src="https://image.qwenlm.ai/public_source/6e0bf1c6-97c7-4f45-9a3b-bee89663c98b/1aa861896-00cd-4750-9503-c42d87799742.png" alt="Escaneamento Intraoral" class="w-full h-36 object-cover rounded-xl mb-4">
                             <span class="text-[#c9a84c] text-xs font-semibold tracking-wider uppercase">Dia 1</span>
-                            <h4 class="text-[#1a2744] font-bold mt-2">Escaneamento Intraoral</h4>
-                            <p class="text-gray-600 text-sm mt-2">Exame digital preciso e confortável para planejamento personalizado.</p>
+                            <h4 class="text-[#1a2744] font-bold mt-1">Escaneamento Intraoral</h4>
+                            <p class="text-gray-500 text-sm mt-2">Exame digital preciso e confortável para planejamento personalizado.</p>
                         </div>
                     </div>
-                    <div class="section-fade text-center relative" style="transition-delay: 0.15s">
-                        <div class="w-16 h-16 mx-auto bg-[#1a2744] rounded-full flex items-center justify-center text-[#c9a84c] font-bold text-xl mb-6 relative z-10 ring-4 ring-white shadow-lg">2</div>
-                        <div class="bg-gray-50 rounded-2xl p-6 hover-lift">
-                            <div class="w-full h-40 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl mb-4 flex items-center justify-center">
-                                <svg class="w-16 h-16 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    <div class="section-fade text-center" style="transition-delay: 0.15s">
+                        <div class="timeline-dot mx-auto mb-6">2</div>
+                        <div class="bg-white rounded-2xl p-6 hover-lift shadow-sm">
+                            <div class="w-full h-36 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl mb-4 flex items-center justify-center">
+                                <svg class="w-14 h-14 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                             </div>
                             <span class="text-[#c9a84c] text-xs font-semibold tracking-wider uppercase">Dia 7</span>
-                            <h4 class="text-[#1a2744] font-bold mt-2">Planejamento Digital</h4>
-                            <p class="text-gray-600 text-sm mt-2">Projeto 3D do tratamento com visualização do resultado final.</p>
+                            <h4 class="text-[#1a2744] font-bold mt-1">Planejamento Digital</h4>
+                            <p class="text-gray-500 text-sm mt-2">Projeto 3D do tratamento com visualização do resultado final.</p>
                         </div>
                     </div>
-                    <div class="section-fade text-center relative" style="transition-delay: 0.3s">
-                        <div class="w-16 h-16 mx-auto bg-[#1a2744] rounded-full flex items-center justify-center text-[#c9a84c] font-bold text-xl mb-6 relative z-10 ring-4 ring-white shadow-lg">3</div>
-                        <div class="bg-gray-50 rounded-2xl p-6 hover-lift">
-                            <div class="w-full h-40 bg-gradient-to-br from-yellow-50 to-amber-100 rounded-xl mb-4 flex items-center justify-center">
-                                <svg class="w-16 h-16 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                    <div class="section-fade text-center" style="transition-delay: 0.3s">
+                        <div class="timeline-dot mx-auto mb-6">3</div>
+                        <div class="bg-white rounded-2xl p-6 hover-lift shadow-sm">
+                            <div class="w-full h-36 bg-gradient-to-br from-yellow-50 to-amber-100 rounded-xl mb-4 flex items-center justify-center">
+                                <svg class="w-14 h-14 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
                             </div>
                             <span class="text-[#c9a84c] text-xs font-semibold tracking-wider uppercase">Dia 15</span>
-                            <h4 class="text-[#1a2744] font-bold mt-2">Fabricação do Alinhador</h4>
-                            <p class="text-gray-600 text-sm mt-2">Produção do dispositivo personalizado com tecnologia de ponta.</p>
+                            <h4 class="text-[#1a2744] font-bold mt-1">Fabricação do Alinhador</h4>
+                            <p class="text-gray-500 text-sm mt-2">Produção do dispositivo personalizado com tecnologia de ponta.</p>
                         </div>
                     </div>
-                    <div class="section-fade text-center relative" style="transition-delay: 0.45s">
-                        <div class="w-16 h-16 mx-auto bg-[#c9a84c] rounded-full flex items-center justify-center text-[#1a2744] font-bold text-xl mb-6 relative z-10 ring-4 ring-white shadow-lg pulse-glow">4</div>
+                    <div class="section-fade text-center" style="transition-delay: 0.45s">
+                        <div class="timeline-dot active mx-auto mb-6 pulse-glow">4</div>
                         <div class="bg-gradient-to-br from-[#c9a84c]/10 to-[#e0c872]/10 rounded-2xl p-6 hover-lift border border-[#c9a84c]/20">
-                            <img src="https://image.qwenlm.ai/public_source/6e0bf1c6-97c7-4f45-9a3b-bee89663c98b/17132f15e-d2c5-417b-b119-f9688a3367f8.png" alt="Entrega" class="w-full h-40 object-cover rounded-xl mb-4">
+                            <img src="https://image.qwenlm.ai/public_source/6e0bf1c6-97c7-4f45-9a3b-bee89663c98b/17132f15e-d2c5-417b-b119-f9688a3367f8.png" alt="Entrega BioClare" class="w-full h-36 object-cover rounded-xl mb-4">
                             <span class="text-[#c9a84c] text-xs font-semibold tracking-wider uppercase">Dia 30</span>
-                            <h4 class="text-[#1a2744] font-bold mt-2">Entrega + Gel BioClare™</h4>
-                            <p class="text-gray-600 text-sm mt-2">Recebimento do alinhador e gel bioativo para uso imediato.</p>
+                            <h4 class="text-[#1a2744] font-bold mt-1">Entrega + Gel BioClare™</h4>
+                            <p class="text-gray-500 text-sm mt-2">Recebimento do alinhador e gel bioativo para uso imediato.</p>
                         </div>
                     </div>
                 </div>
@@ -395,28 +570,28 @@
         </div>
     </section>
 
-    <!-- Indications Section -->
-    <section id="indications" class="py-24 bg-[#f8f9fc] relative overflow-hidden">
+    <!-- ============ INDICATIONS SECTION ============ -->
+    <section id="indications" class="py-28 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 section-fade">
                 <span class="text-[#c9a84c] text-sm font-semibold tracking-[0.3em] uppercase">Aplicações</span>
                 <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#1a2744] mt-4">Casos Ideais</h2>
                 <p class="text-gray-500 mt-4 text-lg">Indicações para o BioClare™</p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="section-fade bg-white rounded-2xl overflow-hidden shadow-sm card-hover group">
-                    <div class="h-48 bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center relative overflow-hidden">
-                        <img src="https://image.qwenlm.ai/public_source/6e0bf1c6-97c7-4f45-9a3b-bee89663c98b/1445d51eb-793d-4288-baa9-8a971bd04d96.png" alt="Alinhamento" class="w-48 h-auto object-contain relative z-10 group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-blue-200/30 to-transparent"></div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="section-fade indication-card group">
+                    <div class="h-44 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-6 relative overflow-hidden">
+                        <img src="https://image.qwenlm.ai/public_source/6e0bf1c6-97c7-4f45-9a3b-bee89663c98b/1445d51eb-793d-4288-baa9-8a971bd04d96.png" alt="Apinhamento Rotação" class="w-44 h-auto object-contain relative z-10 group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-100/50 to-transparent"></div>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
                             <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
                                 <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             </div>
-                            <h4 class="font-bold text-[#1a2744]">Apinhamento / Rotação Anterior</h4>
+                            <h4 class="font-bold text-[#1a2744]">Apinhamento/Rotação Anterior</h4>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">Correção de dentes anteriores desalinhados ou rotacionados.</p>
+                        <p class="text-gray-500 text-sm mb-4">Correção de dentes anteriores desalinhados ou rotacionados.</p>
                         <ul class="space-y-2">
                             <li class="flex items-center text-sm text-gray-600"><svg class="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Dentes levemente tortos</li>
                             <li class="flex items-center text-sm text-gray-600"><svg class="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Rotações menores que 3mm</li>
@@ -424,9 +599,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="section-fade bg-white rounded-2xl overflow-hidden shadow-sm card-hover group" style="transition-delay: 0.15s">
-                    <div class="h-48 bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center relative overflow-hidden">
-                        <img src="https://image.qwenlm.ai/public_source/6e0bf1c6-97c7-4f45-9a3b-bee89663c98b/1aa861896-00cd-4750-9503-c42d87799742.png" alt="Espaço Edêntulo" class="w-48 h-auto object-contain relative z-10 group-hover:scale-110 transition-transform duration-500">
+                <div class="section-fade indication-card group" style="transition-delay: 0.15s">
+                    <div class="h-44 bg-gradient-to-br from-amber-50 to-amber-100 flex items-center justify-center p-6 relative overflow-hidden">
+                        <img src="https://image.qwenlm.ai/public_source/6e0bf1c6-97c7-4f45-9a3b-bee89663c98b/1aa861896-00cd-4750-9503-c42d87799742.png" alt="Espaço Edêntulo" class="w-44 h-auto object-contain relative z-10 group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -435,7 +610,7 @@
                             </div>
                             <h4 class="font-bold text-[#1a2744]">Espaço Edêntulo</h4>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">Solução temporária para espaços de dentes ausentes.</p>
+                        <p class="text-gray-500 text-sm mb-4">Solução temporária para espaços de dentes ausentes.</p>
                         <ul class="space-y-2">
                             <li class="flex items-center text-sm text-gray-600"><svg class="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Dente ausente aguardando implante</li>
                             <li class="flex items-center text-sm text-gray-600"><svg class="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Manutenção do espaço</li>
@@ -443,9 +618,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="section-fade bg-white rounded-2xl overflow-hidden shadow-sm card-hover group" style="transition-delay: 0.3s">
-                    <div class="h-48 bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center relative overflow-hidden">
-                        <img src="https://image.qwenlm.ai/public_source/6e0bf1c6-97c7-4f45-9a3b-bee89663c98b/1f98b3e5f-5aad-48fb-b9bb-1149f3a79fbb.png" alt="Clareamento" class="w-48 h-auto object-contain relative z-10 group-hover:scale-110 transition-transform duration-500">
+                <div class="section-fade indication-card group" style="transition-delay: 0.3s">
+                    <div class="h-44 bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center p-6 relative overflow-hidden">
+                        <img src="https://image.qwenlm.ai/public_source/6e0bf1c6-97c7-4f45-9a3b-bee89663c98b/1f98b3e5f-5aad-48fb-b9bb-1149f3a79fbb.png" alt="Clareamento Bruxismo" class="w-44 h-auto object-contain relative z-10 group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -454,7 +629,7 @@
                             </div>
                             <h4 class="font-bold text-[#1a2744]">Clareamento + Bruxismo</h4>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">Tratamento combinado para estética e proteção.</p>
+                        <p class="text-gray-500 text-sm mb-4">Tratamento combinado para estética e proteção.</p>
                         <ul class="space-y-2">
                             <li class="flex items-center text-sm text-gray-600"><svg class="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Clareamento suave</li>
                             <li class="flex items-center text-sm text-gray-600"><svg class="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Sensibilidade dentinária</li>
@@ -465,7 +640,7 @@
             </div>
 
             <!-- Not Indicated -->
-            <div class="section-fade mt-12 bg-red-50 border border-red-100 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-6">
+            <div class="section-fade mt-12 not-indicated flex flex-col md:flex-row items-center gap-6">
                 <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
                     <svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
                 </div>
@@ -477,8 +652,8 @@
         </div>
     </section>
 
-    <!-- Doctor Section -->
-    <section class="py-24 bg-white">
+    <!-- ============ DOCTOR SECTION ============ -->
+    <section class="py-28 bg-[#f8f9fc]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="section-fade">
@@ -502,51 +677,45 @@
         </div>
     </section>
 
-    <!-- Differentials Section -->
-    <section id="differentials" class="py-24 dark-section relative overflow-hidden">
-        <div class="absolute inset-0">
-            <img src="https://image.qwenlm.ai/public_source/6e0bf1c6-97c7-4f45-9a3b-bee89663c98b/1f98b3e5f-5aad-48fb-b9bb-1149f3a79fbb.png" alt="Tecnologia" class="w-full h-full object-cover opacity-5">
+    <!-- ============ DIFFERENTIALS SECTION ============ -->
+    <section id="differentials" class="py-28 dark-section relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <img src="https://image.qwenlm.ai/public_source/6e0bf1c6-97c7-4f45-9a3b-bee89663c98b/1f98b3e5f-5aad-48fb-b9bb-1149f3a79fbb.png" alt="" class="w-full h-full object-cover">
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 section-fade">
                 <span class="text-[#c9a84c] text-sm font-semibold tracking-[0.3em] uppercase">Exclusivo</span>
-                <h2 class="font-playfair text-4xl md:text-5xl font-bold dark-text-primary mt-4">Por que escolher BioClare™?</h2>
-                <p class="dark-text-secondary mt-4 text-lg">Diferenciais exclusivos que fazem a diferença</p>
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold dark-h1 mt-4">Por que escolher BioClare™?</h2>
+                <p class="dark-body-muted mt-4 text-lg">Diferenciais exclusivos que fazem a diferença</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="section-fade group">
-                    <div class="glass-card rounded-2xl p-10 text-center card-hover h-full">
-                        <div class="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                            <svg class="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
-                        </div>
-                        <h3 class="font-bold text-xl mb-3">Ciência Aplicada</h3>
-                        <p class="leading-relaxed">Fórmula bioativa validada com ativos clínicos comprovados.</p>
+                <div class="section-fade feature-dark-card text-center group">
+                    <div class="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                        <svg class="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
                     </div>
+                    <h3 class="dark-h3 font-bold text-xl mb-3">Ciência Aplicada</h3>
+                    <p class="dark-body-muted leading-relaxed">Fórmula bioativa validada com ativos clínicos comprovados.</p>
                 </div>
-                <div class="section-fade group" style="transition-delay: 0.15s">
-                    <div class="glass-card rounded-2xl p-10 text-center card-hover h-full">
-                        <div class="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-[#c9a84c]/20 to-[#e0c872]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                            <svg class="w-10 h-10 text-[#c9a84c]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>
-                        </div>
-                        <h3 class="font-bold text-xl mb-3">Personalização Total</h3>
-                        <p class="leading-relaxed">Pontic + movimentação + clareamento em uma única peça.</p>
+                <div class="section-fade feature-dark-card text-center group" style="transition-delay: 0.15s">
+                    <div class="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-[#c9a84c]/20 to-[#e0c872]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                        <svg class="w-10 h-10 text-[#c9a84c]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>
                     </div>
+                    <h3 class="dark-h3 font-bold text-xl mb-3">Personalização Total</h3>
+                    <p class="dark-body-muted leading-relaxed">Pontic + movimentação + clareamento em uma única peça.</p>
                 </div>
-                <div class="section-fade group" style="transition-delay: 0.3s">
-                    <div class="glass-card rounded-2xl p-10 text-center card-hover h-full">
-                        <div class="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-green-400/20 to-green-600/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                            <svg class="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                        </div>
-                        <h3 class="font-bold text-xl mb-3">Modelo Escalável</h3>
-                        <p class="leading-relaxed">Atendimento direto ou kits para outros dentistas parceiros.</p>
+                <div class="section-fade feature-dark-card text-center group" style="transition-delay: 0.3s">
+                    <div class="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-green-400/20 to-green-600/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                        <svg class="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
                     </div>
+                    <h3 class="dark-h3 font-bold text-xl mb-3">Modelo Escalável</h3>
+                    <p class="dark-body-muted leading-relaxed">Atendimento direto ou kits para outros dentistas parceiros.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-24 bg-gradient-to-br from-[#f8f6f0] to-white relative overflow-hidden">
+    <!-- ============ CTA SECTION ============ -->
+    <section class="py-28 bg-gradient-to-br from-[#f8f6f0] to-white relative overflow-hidden">
         <div class="absolute top-0 right-0 w-96 h-96 bg-[#c9a84c]/5 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/2"></div>
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div class="section-fade">
@@ -567,8 +736,8 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-white">
+    <!-- ============ CONTACT SECTION ============ -->
+    <section id="contact" class="py-28 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-16">
                 <div class="section-fade">
@@ -612,7 +781,6 @@
                     </a>
                 </div>
 
-                <!-- Contact Form -->
                 <div class="section-fade">
                     <form id="contactForm" class="bg-[#f8f9fc] rounded-2xl p-8 md:p-10 shadow-lg">
                         <h3 class="font-playfair text-2xl font-bold text-[#1a2744] mb-6">Envie sua mensagem</h3>
@@ -643,8 +811,8 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="dark-section pt-16 pb-8">
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-[#0d1526] pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-12 mb-12">
                 <div class="md:col-span-2">
@@ -663,6 +831,7 @@
                     <h4 class="footer-heading font-semibold mb-4">Links Rápidos</h4>
                     <ul class="space-y-3">
                         <li><a href="#home" class="footer-link hover:text-[#c9a84c] transition-colors text-sm">Início</a></li>
+                        <li><a href="#ppr-night" class="footer-link hover:text-[#c9a84c] transition-colors text-sm">PPR Night</a></li>
                         <li><a href="#problem" class="footer-link hover:text-[#c9a84c] transition-colors text-sm">O Problema</a></li>
                         <li><a href="#solution" class="footer-link hover:text-[#c9a84c] transition-colors text-sm">A Solução</a></li>
                         <li><a href="#how-it-works" class="footer-link hover:text-[#c9a84c] transition-colors text-sm">Como Funciona</a></li>
@@ -686,13 +855,13 @@
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/5512996800495" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform hover:shadow-xl" style="box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);">
+    <!-- ============ FLOATING WHATSAPP ============ -->
+    <a href="https://wa.me/5512996800495" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform" style="box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);">
         <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
 
+    <!-- ============ JAVASCRIPT ============ -->
     <script>
-        // Navbar scroll effect
         var navbar = document.getElementById('navbar');
         window.addEventListener('scroll', function() {
             if (window.scrollY > 50) {
@@ -702,7 +871,6 @@
             }
         });
 
-        // Mobile menu
         var menuBtn = document.getElementById('menuBtn');
         var closeMenuBtn = document.getElementById('closeMenuBtn');
         var mobileMenu = document.getElementById('mobileMenu');
@@ -714,7 +882,6 @@
             link.addEventListener('click', function() { mobileMenu.classList.remove('open'); });
         });
 
-        // Scroll animations
         var observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         var observer = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
@@ -726,7 +893,6 @@
 
         document.querySelectorAll('.section-fade').forEach(function(el) { observer.observe(el); });
 
-        // Counter animation
         var counterObserver = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
@@ -753,7 +919,6 @@
         var heroSection = document.getElementById('home');
         if (heroSection) counterObserver.observe(heroSection);
 
-        // Form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             var btn = this.querySelector('button[type="submit"]');
@@ -770,7 +935,6 @@
             }, 3000);
         });
 
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
